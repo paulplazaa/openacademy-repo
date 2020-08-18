@@ -75,7 +75,7 @@ class Session(models.Model):
     @api.depends('attendee_ids')
     def _get_attendees_count(self):
         for record in self:
-            record.attendees_count =  attendees_count = len(record.attendee_ids)
+            record.attendees_count = len(record.attendee_ids)
 
 
     @api.depends('start_date', 'duration')
@@ -128,4 +128,9 @@ class Session(models.Model):
         for record in self.filtered('instructor_id'):
             if record.instructor_id in record.attendee_ids:
                 raise exceptions.ValidationError("A session instructor cant'n be an attendee")
+
+
+
+
+
 
