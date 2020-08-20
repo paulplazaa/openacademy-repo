@@ -191,7 +191,7 @@
         <field name="name">session.gantt</field>
         <field name="model">openacademy.session</field>
         <field name="arch" type="xml">
-			<gantt string="Session Gantt" color="course_id" date_start="start_date" date_delay="hours" default_group_by='instructor_id'>
+			<gantt string="Session Gantt" color="course_id" date_start="start_date" date_delay="hours" default_group_by='instructor_id' date_stop="end_date">
 				<field name="name"/>
 			</gantt>
         </field>
@@ -206,4 +206,31 @@
 		<field name="view_mode">tree,form,calendar,graph,kanban,gantt</field>
 	</record>
 	<menuitem id="session_menu" name="Sessions" parent="openacademy_menu" action="session_list_action"/>
+
+	<record model="ir.ui.view" id="wizard_form_view">
+		<field name="name">wizard.form</field>
+		<field name="model">openacademy.wizard</field>
+		<field name="arch" type="xml">
+			<form string="Add Attendees">
+				<group>
+					<field name="session_ids"/>
+					<field name="attendee_ids"/>
+				</group>
+				<footer>
+					<button name="subscribe" type="object" string="Subscribe" class="oe_highlight"/>
+					or
+					<button special="cancel" string="Cancel"/>
+				</footer>
+			</form>
+		</field>
+	</record>
+	<act_window id="launch_the_wizard"
+				name="Launch the Wizard"
+				src_model="context.model.name"
+				res_model="wizard.model.name"
+				view_mode="form"
+				target="new"
+				key2="client_action_multi"/>
+
 </odoo>
+
