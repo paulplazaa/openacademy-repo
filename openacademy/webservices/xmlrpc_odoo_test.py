@@ -1,5 +1,6 @@
 import functools
 import xmlrpclib
+
 HOST = 'localhost'
 PORT = 8069
 DB = 'dbborrar'
@@ -26,7 +27,7 @@ session_id = call('openacademy.session', 'create', {
     'course_id' : 2,
 })
 
-course_id = call('openacademy.course', 'search', [('name','ilike','sesion1')])[0]
+course_id = call('openacademy.course', 'search', [('name','ilike','Course createrd from odoolib')])[0]
 session_id = call('openacademy.session', 'create', {
     'name' : 'My session assiigned',
     'course_id' : course_id,

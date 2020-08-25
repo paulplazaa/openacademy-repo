@@ -18,4 +18,4 @@ print(user.company_id.name) # the name of its company
 user_data = odoo.execute('res.users', 'read', [user.id])
 print(user_data)
 
-odoo.execute('openacademy.course', 'create', {'name': 'Course createrd from odoolib'})
+odoo.execute('openacademy.course', 'create', {'name': 'Course createrd from odoolib2'})
